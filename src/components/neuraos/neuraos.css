@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --neura-void: #02050a;
+  --neura-cyan: #4be3ff;
+  --neura-cyan-soft: #8fedff;
+  --neura-blue: #3e8fff;
+  --neura-violet: #8b6bff;
+  --neura-amber: #ffb84d;
+  --neura-text-mid: #7fa3bf;
+  --neura-text-lo: #3f5c72;
+}
+
+.neuraos-root {
+  font-family: 'Rajdhani', sans-serif;
+  background: var(--neura-void);
+  color: #dff6ff;
+}
+
+.font-display { font-family: 'Orbitron', sans-serif; }
+.font-hud-mono { font-family: 'JetBrains Mono', monospace; }
+
+.neura-grid-bg {
+  background-image:
+    linear-gradient(rgba(75, 227, 255, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(75, 227, 255, .05) 1px, transparent 1px);
+  background-size: 42px 42px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 40%, transparent 100%);
+}
+
+@keyframes neura-corepulse {
+  0%, 100% { opacity: .5; transform: scale(.94); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+.neura-core-glow { animation: neura-corepulse 3.2s ease-in-out infinite; }
+
+@keyframes neura-floorpulse {
+  0%, 100% { opacity: .4; transform: translateX(-50%) scaleX(.9); }
+  50% { opacity: .75; transform: translateX(-50%) scaleX(1.05); }
+}
+.neura-core-floor { animation: neura-floorpulse 3.2s ease-in-out infinite; }
+
+@keyframes neura-scandrift {
+  0% { top: -120px; }
+  100% { top: 100%; }
+}
+.neura-scanline { animation: neura-scandrift 7s linear infinite; }
+
+@keyframes think-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.neura-scrollbar::-webkit-scrollbar { width: 5px; }
+.neura-scrollbar::-webkit-scrollbar-thumb { background: rgba(75, 227, 255, .25); border-radius: 4px; }
+.neura-scrollbar::-webkit-scrollbar-track { background: transparent; }

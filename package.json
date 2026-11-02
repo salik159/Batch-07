@@ -1,0 +1,67 @@
+{
+  "name": "neuraos-desktop",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --test-concurrency=1 tests/coding-agent.test.mjs tests/gmail.test.cjs tests/email-agent.test.mjs tests/gmail-browser.test.cjs tests/gmail-browser-e2e.test.cjs tests/main-glue.test.cjs",
+    "test:wake": "node tests/test_always_on_wake.mjs",
+    "test:search": "node tests/test_first_sentence_mode.mjs",
+    "build": "vite build",
+    "dev": "vite",
+    "api": "node server/server.mjs",
+    "start": "node server/server.mjs",
+    "desktop": "npm run build && electron .",
+    "desktop:dev": "concurrently -k \"vite --host 127.0.0.1\" \"electron .\"",
+    "dist:win": "electron-builder --win nsis"
+  },
+  "dependencies": {
+    "@google/genai": "^2.32.0",
+    "@react-three/fiber": "^8.17.6",
+    "chart.js": "^4.4.4",
+    "framer-motion": "^11.3.19",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.3.1",
+    "three": "^0.166.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.166.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.2.1",
+    "electron": "^38.1.0",
+    "electron-builder": "^26.0.0",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.1"
+  },
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "com.neuraos.desktop",
+    "productName": "NeuraOS",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "server/**/*",
+      "package.json",
+      ".env.example"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis",
+      "artifactName": "NeuraOS-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
